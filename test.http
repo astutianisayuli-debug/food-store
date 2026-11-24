@@ -1,0 +1,89 @@
+@baseUrl = http://food-store.test/api
+
+### 1. REGISTER (ganti email kalau sudah terdaftar)
+POST {{baseUrl}}/customer/register
+Accept: application/json
+Content-Type: application/json
+
+{
+    "name": "Budi",
+    "email": "budi2@gmail.com",
+    "password": "12345678",
+    "password_confirmation": "12345678"
+}
+
+### 2. LOGIN (salin nilai "token" dari hasilnya)
+POST {{baseUrl}}/customer/login
+Accept: application/json
+Content-Type: application/json
+
+{
+    "email": "budi@gmail.com",
+    "password": "12345678"
+}
+
+### 3. PROFILE (ganti PASTE_TOKEN_DI_SINI)
+GET {{baseUrl}}/customer/profile
+Accept: application/json
+Authorization: Bearer PASTE_TOKEN_DI_SINI
+
+### 4. MY ORDERS
+GET {{baseUrl}}/customer/my-orders
+Accept: application/json
+Authorization: Bearer PASTE_TOKEN_DI_SINI
+
+### 5. RATING
+POST {{baseUrl}}/customer/ratings
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer PASTE_TOKEN_DI_SINI
+
+{
+    "rating": 5,
+    "review": "Enak sekali",
+    "product_id": 1,
+    "transaction_detail_id": 1
+}
+
+### 6. SLIDERS (publik, tanpa token)
+GET {{baseUrl}}/public/sliders
+Accept: application/json
+
+### 7. CATEGORIES (publik, tanpa token)
+GET {{baseUrl}}/public/categories
+Accept: application/json
+
+### 8. DETAIL CATEGORY (ganti SLUG_KATEGORI)
+GET {{baseUrl}}/public/categories/SLUG_KATEGORI
+Accept: application/json
+
+### 9. PRODUCTS (publik, tanpa token)
+GET {{baseUrl}}/public/products
+Accept: application/json
+
+### 10. PRODUCTS POPULAR (publik, tanpa token)
+GET {{baseUrl}}/public/products-popular
+Accept: application/json
+
+### 11. DETAIL PRODUCT (ganti SLUG_PRODUK)
+GET {{baseUrl}}/public/products/SLUG_PRODUK
+Accept: application/json
+
+### 12. CARTS - LIST (butuh token)
+GET {{baseUrl}}/public/carts
+Accept: application/json
+Authorization: Bearer PASTE_TOKEN_DI_SINI
+
+### 13. CARTS - TAMBAH
+POST {{baseUrl}}/public/carts
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer PASTE_TOKEN_DI_SINI
+
+{
+    "product_id": 1,
+    "qty": 1
+}
+
+### 14. CARTS - INCREMENT (ganti cart_id)
+POST
